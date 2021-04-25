@@ -19,7 +19,7 @@ module.exports = {
       items: [
         {
           type: 'doc',
-          docId: 'intro',
+          docId: 'JavaScript/JavaScript',
           position: 'left',
           label: '文档',
         },

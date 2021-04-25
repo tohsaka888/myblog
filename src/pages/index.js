@@ -38,7 +38,7 @@ export default function Home() {
     marginLeft: "25vw",
     fontWeight: "bold",
     opacity: 0,
-    marginTop: "0vh",
+    marginTop: "5vh",
   }));
   const changeBackgroundImageStyle = (toTop) => {
     if (toTop > 0 && toTop < window.innerHeight) {
@@ -53,7 +53,7 @@ export default function Home() {
         marginLeft: "25vw",
         fontWeight: "bold",
         opacity: 0,
-        marginTop: "0vh",
+        marginTop: "5vh",
       });
       setTitleStyle({
         fontSize: "0em",
@@ -74,7 +74,7 @@ export default function Home() {
       setBgImgStyle.start({ opacity: 1, config: { duration: 500 } });
       setIntroduce({
         opacity: 1,
-        marginTop: "1vh",
+        marginTop: "3vh",
         delay: 1000,
       });
       setTitleStyle({
@@ -116,7 +116,7 @@ export default function Home() {
     setIntroduce({
       opacity: 1,
       delay: 1000,
-      marginTop: "1vh",
+      marginTop: "3vh",
       config: { duration: 500 },
     });
     window.addEventListener("scroll", () => {
@@ -139,7 +139,7 @@ export default function Home() {
   }, []);
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
+      title={`${siteConfig.title}`}
       description="Description will go into a meta tag in <head />"
     >
       <main>

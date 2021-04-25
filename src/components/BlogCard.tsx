@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { animated, SpringValue, useSpring, useTransition } from "react-spring";
 import { Tag, Button } from "antd";
 import { Link } from "react-router-dom";
+import { DoubleLeftOutlined, DoubleRightOutlined } from "@ant-design/icons";
 
 type BlogCardInfo = {
   title?: string;
@@ -139,7 +140,8 @@ export default function BlogCard({
       }}
     >
       <div>
-        <Button
+        <DoubleLeftOutlined
+          style={{ fontSize: "5em", marginLeft: "5vw", color: "white" }}
           onClick={() => {
             setTitleStyle({
               fontSize: "3em",
@@ -177,9 +179,7 @@ export default function BlogCard({
             });
             setTagStyle({ opacity: 1, delay: 500, marginTop: "10px" });
           }}
-        >
-          pre
-        </Button>
+        />
       </div>
       <div ref={cardRef}>
         <animated.div style={transition}>
@@ -203,7 +203,7 @@ export default function BlogCard({
                   </animated.div>
                   <animated.div style={textStyle}>{briefInfo}</animated.div>
                   <animated.div style={tagStyle}>
-                    <Link to={"/docs/intro"}>
+                    <Link to={"/docs/JavaScript"}>
                       <Button
                         type={"primary"}
                         style={{
@@ -222,9 +222,9 @@ export default function BlogCard({
           })}
         </animated.div>
       </div>
-
       <div>
-        <Button
+        <DoubleRightOutlined
+          style={{ fontSize: "5em", marginRight: "5vw", color: "white" }}
           onClick={() => {
             setTitleStyle({
               fontSize: "3em",
@@ -262,9 +262,7 @@ export default function BlogCard({
             });
             setTagStyle({ opacity: 1, delay: 500, marginTop: "10px" });
           }}
-        >
-          next
-        </Button>
+        />
       </div>
     </animated.div>
   );
