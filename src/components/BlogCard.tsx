@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { animated, SpringValue, useSpring, useTransition } from "react-spring";
 import { Tag, Button } from "antd";
+import { Link } from "react-router-dom";
 
 type BlogCardInfo = {
   title?: string;
@@ -23,7 +24,8 @@ export default function BlogCard({
   const [preIndex, setPreIndex] = useState(0);
   const cardRef = useRef<HTMLDivElement>(null);
   const [transition, setTransition] = useSpring(() => ({
-    transform: "translate3d(100%,0,0)",
+    transform: "translate3d(120%,0,0)",
+    opacity: 0,
     display: "none",
   }));
   const [titleStyle, setTitleStyle] = useSpring(() => ({
@@ -73,30 +75,31 @@ export default function BlogCard({
         setBgimgStyle({ opacity: 1, config: { duration: 1500 } });
         setTransition({
           transform: "translate3d(0,0,0)",
-          delay: 500,
+          // delay: 500,
           config: { duration: 800 },
+          opacity: 1,
           display: "block",
         });
         setTitleStyle({
           paddingTop: "10px",
-          delay: 1500,
+          delay: 1000,
           color: "white",
           opacity: 1,
         });
         setTextStyle({
           marginTop: "20px",
-          delay: 1500,
+          delay: 1000,
           color: "white",
           opacity: 1,
         });
-        setTagStyle({ opacity: 1, delay: 1500, marginTop: "10px" });
+        setTagStyle({ opacity: 1, delay: 1000, marginTop: "10px" });
       } else {
         setBgImg("../../static/img/bg.png");
         setBgimgStyle({ opacity: 0.5, config: { duration: 2000 } });
         setTransition({
-          transform: "translate3d(100%,0,0)",
-          delay: 500,
+          transform: "translate3d(120%,0,0)",
           config: { duration: 800 },
+          opacity: 0,
           display: "none",
         });
         setTitleStyle({
@@ -132,6 +135,7 @@ export default function BlogCard({
         display: "flex",
         alignItems: "center",
         justifyContent: "space-between",
+        height: "100vh",
       }}
     >
       <div>
@@ -178,36 +182,47 @@ export default function BlogCard({
         </Button>
       </div>
       <div ref={cardRef}>
-        {transitions((style, i) => {
-          return (
-            <animated.div style={style}>
-              <div
-                style={{
-                  boxShadow: "0px 0px 5px 5px #f1efef",
-                  width: "70vw",
-                  height: "50vh",
-                  borderRadius: "20px",
-                  paddingLeft: "2vw",
-                }}
-              >
-                <animated.div style={titleStyle}>{title + index}</animated.div>
-                <animated.div style={tagStyle}>
-                  <Tag color={"#108ee9"}>{tag}</Tag>
-                </animated.div>
-                <animated.div style={textStyle}>{briefInfo}</animated.div>
-                <animated.div style={tagStyle}>
-                  <Button
-                    type={"primary"}
-                    style={{ position: "relative", top: "20vh", left: "60vw" }}
-                  >
-                    查看详情
-                  </Button>
-                </animated.div>
-              </div>
-            </animated.div>
-          );
-        })}
+        <animated.div style={transition}>
+          {transitions((style, i) => {
+            return (
+              <animated.div style={style}>
+                <div
+                  style={{
+                    boxShadow: "0px 0px 5px 5px #f1efef",
+                    width: "70vw",
+                    height: "50vh",
+                    borderRadius: "20px",
+                    paddingLeft: "2vw",
+                  }}
+                >
+                  <animated.div style={titleStyle}>
+                    {title + index}
+                  </animated.div>
+                  <animated.div style={tagStyle}>
+                    <Tag color={"#108ee9"}>{tag}</Tag>
+                  </animated.div>
+                  <animated.div style={textStyle}>{briefInfo}</animated.div>
+                  <animated.div style={tagStyle}>
+                    <Link to={"/docs/intro"}>
+                      <Button
+                        type={"primary"}
+                        style={{
+                          position: "relative",
+                          top: "20vh",
+                          left: "60vw",
+                        }}
+                      >
+                        查看详情
+                      </Button>
+                    </Link>
+                  </animated.div>
+                </div>
+              </animated.div>
+            );
+          })}
+        </animated.div>
       </div>
+
       <div>
         <Button
           onClick={() => {

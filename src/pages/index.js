@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import HomepageFeatures from "../components/HomepageFeatures";
-import { useSpring, animated, to, config } from "react-spring";
+import { animated, config, to, useSpring } from "react-spring";
 import BlogCard from "../components/BlogCard";
 import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 
@@ -45,7 +45,7 @@ export default function Home() {
       setBgImgStyle.start({
         opacity: 0.5,
         delay: 300,
-        config: {duration: 500}
+        config: { duration: 500 },
       });
       setIntroduce({
         fontSize: "1.5em",
@@ -71,11 +71,11 @@ export default function Home() {
         textShadow: "5px 5px 5px gray",
       });
     } else if (toTop > window.innerHeight) {
-      setBgImgStyle.start({ opacity: 1, config: {duration: 500} });
+      setBgImgStyle.start({ opacity: 1, config: { duration: 500 } });
       setIntroduce({
         opacity: 1,
         marginTop: "1vh",
-        delay: 1000
+        delay: 1000,
       });
       setTitleStyle({
         opacity: 1,
@@ -123,7 +123,7 @@ export default function Home() {
       if (featureRef.current) {
         // console.log(featureRef.current.getBoundingClientRect().top);
         changeBackgroundImageStyle(
-          featureRef.current.getBoundingClientRect().top
+          featureRef.current.getBoundingClientRect().top,
         );
       }
     });
@@ -132,7 +132,7 @@ export default function Home() {
         if (featureRef.current) {
           // console.log(featureRef.current.getBoundingClientRect().top);
           changeBackgroundImageStyle(
-            featureRef.current.getBoundingClientRect().top
+            featureRef.current.getBoundingClientRect().top,
           );
         }
       });
@@ -147,6 +147,7 @@ export default function Home() {
           style={{
             height: "100vh",
             width: "100vw",
+            overflow: "hidden",
           }}
         >
           <animated.img src={bgImg} style={bgImgStyle} alt={"none"} />
@@ -161,14 +162,20 @@ export default function Home() {
             <animated.span style={name}>Tohsaka888</animated.span>
           </div>
           <animated.div style={introduce}>
-            在这里，有B站视频配套文本、系统课程、技术博客、前端资源导航、以及UP主的想法和生活点滴。致力于帮助你以最直观、最快速的方式学会前端开发，并希望我的个人经历对你有所启发。
+            欢迎来到我的博客。前端小白，主要使用React框架，当然React Native也比不可少。开发过<strong
+              style={{ color: "blueviolet" }}
+            >
+              常工云音乐Web端和App
+            </strong>
+            。如果你也在学习前端，欢迎和我一起讨论。博客中我会记录学习过程中遇到的问题(JavaScript,TypeScript,Linux,React,React
+            Native,Deno,Node,Css,Styled-components,React-spring,Java等等)。争取每日更新！
           </animated.div>
         </div>
-        <div ref={featureRef} style={{ height: "80vh" }}>
+        <div ref={featureRef} style={{ height: "100vh" }}>
           <HomepageFeatures />
         </div>
       </main>
-      <div style={{height: "70vh",marginTop: "20vh"}}>
+      <div style={{ height: "100vh" }}>
         <BlogCard setBgImg={setBgImg} setBgimgStyle={setBgImgStyle} />
       </div>
     </Layout>
