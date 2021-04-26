@@ -72,7 +72,7 @@ export default function BlogCard({
         cardRef.current.getBoundingClientRect().top > 0 &&
         cardRef.current.getBoundingClientRect().top < window.innerHeight
       ) {
-        setBgImg("../../static/img/1.png");
+        setBgImg("https://w.wallhaven.cc/full/lm/wallhaven-lmm2p2.png");
         setBgimgStyle({ opacity: 1, config: { duration: 1500 } });
         setTransition({
           transform: "translate3d(0,0,0)",
@@ -95,7 +95,7 @@ export default function BlogCard({
         });
         setTagStyle({ opacity: 1, delay: 1000, marginTop: "10px" });
       } else {
-        setBgImg("../../static/img/bg.png");
+        setBgImg("https://w.wallhaven.cc/full/pk/wallhaven-pk8pzj.png");
         setBgimgStyle({ opacity: 0.5, config: { duration: 2000 } });
         setTransition({
           transform: "translate3d(120%,0,0)",

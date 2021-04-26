@@ -9,7 +9,7 @@ import "antd/dist/antd.css"; // or 'antd/dist/antd.less'
 export default function Home() {
   const { siteConfig } = useDocusaurusContext();
   const featureRef = useRef(null);
-  const [bgImg, setBgImg] = useState("../../static/img/bg.png");
+  const [bgImg, setBgImg] = useState("https://w.wallhaven.cc/full/pk/wallhaven-pk8pzj.png");
   const [bgImgStyle, setBgImgStyle] = useSpring(() => ({
     width: "100vw",
     height: "100vh",
@@ -28,7 +28,6 @@ export default function Home() {
     fontSize: "0em",
     textAlign: "center",
     opacity: 0,
-    color: "white",
     fontWeight: "normal",
     textShadow: "5px 5px 5px gray",
   }));
