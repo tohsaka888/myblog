@@ -59,16 +59,15 @@ export default function HomepageFeatures() {
     opacity: 0,
   }));
   const scrollFunc = () => {
-    console.log(featuresRef.current.getBoundingClientRect().top);
     if (featuresRef.current) {
       if (
-        featuresRef.current.getBoundingClientRect().top > 0 &&
+        featuresRef.current.getBoundingClientRect().top > -window.innerHeight * 0.5 &&
         featuresRef.current.getBoundingClientRect().top < window.innerHeight
       ) {
         setFeatures({
           transform: "scale(1,1)",
           opacity: 1,
-          config: { duration: 1000 },
+          config: { duration: 800 },
         });
       } else {
         setFeatures({ transform: "scale(0.1,0.1)", opacity: 0 });

@@ -14,6 +14,27 @@ type BlogCardInfo = {
 
 const arr = [1, 2, 3];
 
+const tempBlogInfo = [
+  {
+    title: "JavaScrpt",
+    tag: "js",
+    intro:
+      "JavaScript（通常缩写为JS）是一种高级的、解释型的编程语言[8]。JavaScript是一门基于原型、头等函数的语言[9]，是一门多范式的语言，它支持面向对象程序设计，命令式编程，以及函数式编程。它提供语法来操控文本、数组、日期以及正则表达式等，不支持I/O，比如网络、存储和图形等，但这些都可以由它的宿主环境提供支持。它已经由ECMA（欧洲电脑制造商协会）通过ECMAScript实现语言的标准化[8]。它被世界上的绝大多数网站所使用，也被世界主流浏览器（Chrome、IE、Firefox、Safari、Opera）支持。",
+  },
+  {
+    title: "TypeScript",
+    tag: "ts",
+    intro:
+      "TypeScript是为开发大型应用而设计的，并且TypeScript可转译成JavaScript。由于TypeScript是JavaScript的严格超集，任何现有的JavaScript程序都是合法的TypeScript程序。TypeScript编译器本身也是用TypeScript编写，并被转译为JavaScript",
+  },
+  {
+    title: "React",
+    tag: "react",
+    intro:
+      "React 使创建交互式 UI 变得轻而易举。为你应用的每一个状态设计简洁的视图，当数据改变时 React 能有效地更新并正确地渲染组件。创建拥有各自状态的组件，再由这些组件构成更加复杂的 UI。无论你现在正在使用什么技术栈，你都可以随时引入 React 来开发新特性，而不需要重写现有代码。",
+  },
+];
+
 export default function BlogCard({
   title = "BlogTitle",
   tag = ["web"],
@@ -164,7 +185,11 @@ export default function BlogCard({
               marginTop: "0px",
             });
             setPreIndex(index);
-            setIndex(index - 1);
+            if (index - 1 >= 0) {
+              setIndex(index - 1);
+            } else {
+              alert("前面没有了...");
+            }
             setTitleStyle({
               paddingTop: "10px",
               delay: 500,
@@ -196,20 +221,22 @@ export default function BlogCard({
                   }}
                 >
                   <animated.div style={titleStyle}>
-                    {title + index}
+                    {tempBlogInfo[i].title}
                   </animated.div>
                   <animated.div style={tagStyle}>
-                    <Tag color={"#108ee9"}>{tag}</Tag>
+                    <Tag color={"#108ee9"}>{tempBlogInfo[i].tag}</Tag>
                   </animated.div>
-                  <animated.div style={textStyle}>{briefInfo}</animated.div>
+                  <animated.div style={textStyle}>
+                    {tempBlogInfo[i].intro}
+                  </animated.div>
                   <animated.div style={tagStyle}>
                     <Link to={"/docs/JavaScript"}>
                       <Button
                         type={"primary"}
                         style={{
-                          position: "relative",
-                          top: "20vh",
-                          left: "60vw",
+                          position: "absolute",
+                          top: "42vh",
+                          left: "62vw",
                         }}
                       >
                         查看详情
@@ -247,7 +274,7 @@ export default function BlogCard({
               marginTop: "0px",
             });
             setPreIndex(index);
-            setIndex(index + 1);
+            setIndex((index + 1) % tempBlogInfo.length);
             setTitleStyle({
               paddingTop: "10px",
               delay: 500,

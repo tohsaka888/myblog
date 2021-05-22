@@ -10,6 +10,9 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  height: 96vh;
+  background-image: url("http://n.sinaimg.cn/sinacn20114/178/w640h1138/20190327/868f-hutwezh0685199.jpg");
+  background-attachment: fixed;
 }
 
 @media screen and (max-width: 966px) {
